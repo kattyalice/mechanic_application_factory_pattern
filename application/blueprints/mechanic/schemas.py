@@ -1,0 +1,21 @@
+from application.extensions import ma
+from application.models import Mechanic
+from marshmallow import fields
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+
+
+class MechanicSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Mechanic
+        include_fk = True
+        load_instance = False
+        dump_only = ("tickets",)
+        unknown = "exclude"
+
+    tickets = fields.List(
+        fields.Nested("ServiceTicketSchema", exclude=("mechanics",)),
+        dump_only=True
+    )
+
+mechanic_schema = MechanicSchema()
+mechanics_schema = MechanicSchema(many=True)

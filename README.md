@@ -1,0 +1,9 @@
+This project is a fully functional RESTful API designed to manage customers, mechanics, and vehicle service tickets for a mechanic shop. The API is built using Flask and organized using a Blueprint architecture. This structure keeps the application modular, clean, and easy to maintain as it grows.
+
+The database models were created using SQLAlchemy and were designed to represent real-world relationships within a mechanic shop. Customers can have multiple service tickets, forming a one-to-many relationship, while mechanics can be assigned to many service tickets, creating a many-to-many relationship through an association table. Marshmallow schemas were used to serialize and validate incoming and outgoing JSON, ensuring that only valid data is processed by the API.
+
+Each resource includes complete CRUD functionality. Customers and mechanics both support creating new records, viewing all records, retrieving individual records by ID, updating them, and deleting them. Service tickets extend this functionality by also allowing mechanics to be assigned or removed dynamically, demonstrating relationship management through SQLAlchemy. Creating a service ticket also enforces that the referenced customer exists, reinforcing proper data integrity.
+
+All endpoints were thoroughly tested in Postman during development. The API requests were organized into folders that match the project’s Blueprint structure, making it easy to verify each feature. These tests include successful operations as well as validation errors, relationship assignment, and full serialization of nested data such as showing all mechanics assigned to a given ticket.
+
+Overall, this project demonstrates the use of Blueprints for scalable application design, SQLAlchemy for relational modeling, and Marshmallow for clean data serialization. Combined with systematic Postman testing, this API represents a complete backend system capable of supporting a mechanic shop’s core data operations.
